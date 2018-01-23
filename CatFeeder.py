@@ -14,10 +14,9 @@ PASSWORD = 'nskjynorpqcwfxya'
 
 def feedByGmail():
     gmailWrapper = GmailWrapper(HOSTNAME, USERNAME, PASSWORD)
-    ids = gmailWrapper.getIdsBySubject('feed cat')
+    ids = gmailWrapper.getIdsBySubject('feed cat','food')
 
-    ids += gmailWrapper.getIdsByBody('feed cat')
-    ids += gmailWrapper.getIdsByBody('food')
+    ids += gmailWrapper.getIdsByBody('feed cat','food')
 
 
     if(len(ids) > 0):
