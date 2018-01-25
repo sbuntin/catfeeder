@@ -6,18 +6,22 @@ from GmailWrapper import GmailWrapper
 #setup in/out pin control
 import RPi.GPIO as GPIO
 import time
+import EmailLogin #provides hostname, username, password
 
-#constants for imap
-HOSTNAME = 'imap.gmail.com'
-USERNAME = 'starvinglittlebastards'
-PASSWORD = 'nskjynorpqcwfxya'
+# I have email login info in EmailLogin.py. EmailLogin.py format is
+# as follows:
+# HOSTNAME='mail.example.com'
+# USERNAME='myname123'
+# PASSWORD='reallygoodpasswordhere'
 
 def feedByGmail():
     gmailWrapper = GmailWrapper(HOSTNAME, USERNAME, PASSWORD)
-    ids = gmailWrapper.getIdsBySubject('feed cat','food')
 
-    ids += gmailWrapper.getIdsByBody('feed cat','food')
+    ids = gmailWrapper.getIdsBySubject('feed cat')
+    ids = gmailWrapper.getIdsBySubject('food')
 
+    ids += gmailWrapper.getIdsByBody('feed cat')
+    ids += gmailWrapper.getIdsByBody('food')
 
     if(len(ids) > 0):
         try:
