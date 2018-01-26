@@ -15,7 +15,7 @@ import EmailLogin #provides hostname, username, password
 # PASSWORD='reallygoodpasswordhere'
 
 def feedByGmail():
-    gmailWrapper = GmailWrapper(HOSTNAME, USERNAME, PASSWORD)
+    gmailWrapper = GmailWrapper(EmailLogin.HOSTNAME, EmailLogin.USERNAME, EmailLogin.PASSWORD)
 
     ids = gmailWrapper.getIdsBySubject('feed cat')
     ids = gmailWrapper.getIdsBySubject('food')
